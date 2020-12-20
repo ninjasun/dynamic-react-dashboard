@@ -15,7 +15,9 @@ const stackedBarOptions = {
   },
   height: "500px",
 };
+
 function getLastOption() {
   return stackedBarOptions;
 }
+
 export { getLastOption };

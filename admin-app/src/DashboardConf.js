@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import { StackedBarChart } from "@carbon/charts-react";
 import "@carbon/charts/styles.css";
 import * as Service from "./schema/dashboard_01";
@@ -34,25 +35,28 @@ const initialData = [
   { group: "Dataset 2", date: "2019-01-18T23:00:00.000Z", value: -63954 },
 ];
 
-function Dashboard() {
+function DashboardConf() {
   const [stackBarData, setStackBarData] = useState([]);
-
-  const [options, setOptions] = useState(initialOptions);
+  const [options, setOptions] = useState();
 
   useEffect(() => {
     setStackBarData(initialData);
   }, []);
 
   useEffect(() => {
+    // set user options
     const lasOption = Service.getLastOption();
     setOptions(lasOption);
   }, []);
 
+  const handleUpdateStackedBarChart = async (values) => {};
+
   return (
     <div style={{ margin: "auto", padding: 25, textAlign: "center" }}>
       <StackedBarChart data={stackBarData} options={options} />
+      <button onClick={handleUpdateStackedBarChart}>SAVE</button>
     </div>
   );
 }
 
-export default Dashboard;
+export default DashboardConf;
